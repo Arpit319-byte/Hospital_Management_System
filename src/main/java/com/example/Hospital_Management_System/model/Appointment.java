@@ -1,5 +1,6 @@
 package com.example.Hospital_Management_System.model;
 
+import com.example.Hospital_Management_System.utils.Status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ public class Appointment {
     private int patientId;
     private int doctorId;
     private Date appointmentDate;
-    private status;
+    private Status status;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
