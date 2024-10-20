@@ -1,4 +1,5 @@
 package com.example.Hospital_Management_System.model;
+import com.example.Hospital_Management_System.utils.BillingStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ public class Billing {
     private int doctorId;
     private String doctorName;
     private double amount;
-    private Status status;
+    private BillingStatus status;
     private PaymentMethod paymentMethod;
     private LocalDateTime billingDate;
     private LocalDateTime createdAt;
