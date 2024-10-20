@@ -1,5 +1,6 @@
 package com.example.Hospital_Management_System.model;
 import com.example.Hospital_Management_System.utils.BillingStatus;
+import com.example.Hospital_Management_System.utils.PaymentMethod;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
