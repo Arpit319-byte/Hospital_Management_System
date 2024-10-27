@@ -4,6 +4,7 @@ import com.example.Hospital_Management_System.model.Appointment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AppointmentService {
@@ -32,18 +33,17 @@ public class AppointmentService {
 
 
     public Appointment updateAppointment(int patientId, Appointment newAppointment) {
-        Appointment appointment=appointmentRepository.findById(patientId).orElse(null);
+        Optional<Appointment > appointmentOptional =appointmentRepository.findById(patientId);
 
-        if(appointment == null)
+            if (appointmentOptional.isPresent()) {
+                Appointment appointment= appointmentOptional.get();
+                appointment.setPatientId(newAppointment.getPatientId());
+                appointment.setDoctorId(newAppointment.getDoctorId());
+                appointment.setAppointmentDate(newAppointment.getAppointmentDate());
+                appointment.setStatus(newAppointment.getStatus());
+                return  appointmentRepository.save(appointment);
+            }
             return null;
-        else{
-            appointment.setPatientId(newAppointment.getPatientId());
-            appointment.setDoctorId(newAppointment.getDoctorId());
-            appointment.setAppointmentDate(newAppointment.getAppointmentDate());
-            appointment.setStatus(newAppointment.getStatus());
-            appointmentRepository.save(appointment);
-        }
-        return appointment;
     }
 
 
