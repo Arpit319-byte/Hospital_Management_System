@@ -1,4 +1,5 @@
 package com.example.Hospital_Management_System.Controller;
+import com.example.Hospital_Management_System.Service.AppointmentService;
 import com.example.Hospital_Management_System.model.Appointment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ public class AppointmentController {
     AppointmentService appointmentService;
 
     void appointmentController(AppointmentService appointmentService){
-        this.appointmentService=appintmentService;
+        this.appointmentService=appointmentService;
     }
 
     @GetMapping
