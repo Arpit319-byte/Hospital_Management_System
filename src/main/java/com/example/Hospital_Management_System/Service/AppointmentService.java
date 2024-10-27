@@ -3,6 +3,8 @@ import com.example.Hospital_Management_System.Repository.AppointmentRepository;
 import com.example.Hospital_Management_System.model.Appointment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -37,11 +39,11 @@ public class AppointmentService {
         if(appointment == null)
             return null;
         else{
-
             appointment.setPatientId(newAppointment.getPatientID());
             appointment.setDocotorId(newAppointment.getDoctorID());
             appointment.setAppointmentDate(newAppointment.getAppointmentDate());
             appointment.setStatus(newAppointment.getStatus());
+            appointmentRepository.save(appointment);
         }
 
         return appointment;
@@ -50,9 +52,10 @@ public class AppointmentService {
 
 
     public boolean deleteAppointmentById(int patientId) {
-        Appointment appointment=appointmentRepository.findById(patientId).orElse(null);
-
-        return appointment != null;
-
+        if(appointmentRepository.existsById(patientId)) {
+            appointmentRepository.deleteById(patientId);
+            return true;
+        }
+        return false;
     }
 }
