@@ -17,7 +17,7 @@ public class AppointmentController {
    private final  AppointmentService appointmentService;
 
     @Autowired
-    void appointmentController(AppointmentService appointmentService){
+    public AppointmentController(AppointmentService appointmentService){
         this.appointmentService=appointmentService;
     }
 
@@ -33,7 +33,6 @@ public class AppointmentController {
     @GetMapping("/{patientId}")
     public ResponseEntity<Appointment> getAppointment(@PathVariable int patientId){
         Appointment appointment=appointmentService.getAppointmentById(patientId);
-
         if(appointment == null)
             return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(appointment,HttpStatus.OK);
