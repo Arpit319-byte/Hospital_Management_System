@@ -37,13 +37,13 @@ public class DoctorController {
 
     @PostMapping
     public ResponseEntity<Doctor> addDoctor(@RequestBody Doctor doctor){
-
+        return new ResponseEntity<Doctor>(doctorService.addDoctor(doctor),HttpStatus.OK);
     }
 
     @DeleteMapping("/{doctorId}")
     public ResponseEntity<Void> deleteDoctorById(@PathVariable int doctorId){
 
-        boolean isRemoved=doctorService.deleteDoctorById();
+        boolean isRemoved=doctorService.deleteDoctorById(doctorId);
 
         if(!isRemoved)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -51,8 +51,8 @@ public class DoctorController {
     }
 
     @PutMapping("{/{doctorId}")
-    public ResponseEntity<Doctor> updateDoctorById(){
-           Doctor d=doctorService.updateDoctorId();
+    public ResponseEntity<Doctor> updateDoctorById(@PathVariable int doctorId,@RequestBody Doctor doctor){
+           Doctor d=doctorService.updateDoctorId(doctorId,doctor);
 
            if(d == null)
                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
