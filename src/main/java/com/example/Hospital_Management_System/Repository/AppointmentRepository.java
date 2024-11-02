@@ -8,5 +8,4 @@ import java.net.InterfaceAddress;
 
 @Repository
  public interface AppointmentRepository extends JpaRepository<Appointment, Integer> {
-
 }
